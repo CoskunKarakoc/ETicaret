@@ -30,7 +30,12 @@ namespace Abc.Nrtwnd.BusinessLayer.Concrete
 
         public List<Product> GetByCategoryId(int categoryId)
         {
-            return _productDal.GetAll(p => p.CategoryId == categoryId);
+            return _productDal.GetAll(p => p.CategoryId == categoryId || categoryId==0);
+        }
+
+        public Product GetById(int productId)
+        {
+            return _productDal.Get(p => p.ProductId == productId);
         }
 
         public void Update(Product entity)

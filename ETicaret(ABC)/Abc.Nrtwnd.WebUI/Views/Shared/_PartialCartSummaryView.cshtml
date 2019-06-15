@@ -1,0 +1,14 @@
+﻿@model Abc.Nrtwnd.WebUI.Models.Cart.CartSummaryViewModel
+
+
+<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+   
+    @foreach (var cartCartLine in Model.Cart.CartLines)
+    {
+        <a class="dropdown-item" href="#"><span class="badge badge-success">@cartCartLine.Quantity</span> @cartCartLine.Product.ProductName</a>
+    }
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="#"><i class="fa fa-shopping-cart"></i> @Model.Cart.Total</a>
+    <div class="dropdown-divider"></div>
+    <a class="dropdown-item" href="@Url.Action("List","Cart")">Go To Cart Details</a>
+</div>

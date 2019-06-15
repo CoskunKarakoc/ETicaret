@@ -14,5 +14,6 @@ namespace Abc.Nrtwnd.BusinessLayer.Abstract
         void Add(Product entity);
         void Delete(Product entity);
         void Update(Product entity);
+        Product GetById(int productId);
     }
 }

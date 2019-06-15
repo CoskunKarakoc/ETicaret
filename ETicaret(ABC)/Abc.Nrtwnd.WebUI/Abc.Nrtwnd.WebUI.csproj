@@ -97,6 +97,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\font-awesome.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="Global.asax" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.css" />
     <Content Include="node_modules\bootstrap\dist\css\bootstrap-grid.min.css" />
@@ -388,13 +391,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="ExtensionMethod\CurrentSession.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Infrastructre\Ninject\NinjectControllerFactory.cs" />
+    <Compile Include="Models\Cart\CartSummaryViewModel.cs" />
+    <Compile Include="Models\Cart\ShippingDetailsViewModel.cs" />
+    <Compile Include="Models\Category\CategoryListViewModal.cs" />
     <Compile Include="Models\Product\ProductListViewModal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\CartSessionService.cs" />
+    <Compile Include="Services\ICartSessionService.cs" />
+    <Compile Include="TagHelpers\PagingTagHelper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -527,9 +539,19 @@
     <Content Include="node_modules\jquery\package.json" />
     <Content Include="node_modules\jquery\README.md" />
     <Content Include="node_modules\jquery\src\.eslintrc.json" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
     <None Include="packages.config" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\_Layout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_PartialCategoriesView.cshtml" />
+    <Content Include="Views\Shared\_PartialCartSummaryView.cshtml" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Cart\List.cshtml" />
+    <Content Include="Views\Cart\Complete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -539,6 +561,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Abc.BusinessLayer\Abc.Nrtwnd.BusinessLayer.csproj">

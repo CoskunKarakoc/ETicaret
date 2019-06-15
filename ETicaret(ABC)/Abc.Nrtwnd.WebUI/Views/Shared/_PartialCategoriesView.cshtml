@@ -1,0 +1,15 @@
+﻿@using Abc.Nrtwnd.Entities.Concrete
+@model Abc.Nrtwnd.WebUI.Models.Category.CategoryListViewModal
+
+
+<div class="list-group">
+    @foreach (Category category in Model.Categories)
+    {
+        var css = "list-group-item";
+        if (category.CategoryId==Model.CurrenCategory)
+        {
+            css += " active";
+        }
+        <a href="@Url.Action("Index","Product",new{category=@category.CategoryId})" class="@css">@category.CategoryName</a>
+    }
+</div>

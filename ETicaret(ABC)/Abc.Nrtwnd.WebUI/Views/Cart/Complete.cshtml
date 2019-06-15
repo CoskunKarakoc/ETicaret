@@ -1,0 +1,66 @@
+﻿@model Abc.Nrtwnd.WebUI.Models.Cart.ShippingDetailsViewModel
+
+@{
+    ViewBag.Title = "Complete";
+}
+
+<h2>Shipping Details</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.FirstName, new { htmlAttributes = new { @class = "form-control", placeholder = "First Name" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.FirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.LastName, new { htmlAttributes = new { @class = "form-control", placeholder = "Last Name" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.LastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.EMail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.EMail, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.EMail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.Age, new { htmlAttributes = new { @class = "form-control", placeholder = "Age" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.Age, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.Address, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.Address, new { htmlAttributes = new { @class = "form-control", placeholder = "Address" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.Address, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.shippingDetails.City, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.shippingDetails.City, new { htmlAttributes = new { @class = "form-control", placeholder = "City" } })
+                @Html.ValidationMessageFor(model => model.shippingDetails.City, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Complete Shopping" class="btn btn-sm btn-success" />
+            </div>
+        </div>
+    </div>
+}
+

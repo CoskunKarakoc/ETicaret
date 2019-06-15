@@ -1,0 +1,48 @@
+﻿@model Abc.Nrtwnd.WebUI.Models.Cart.CartSummaryViewModel
+@{
+    ViewBag.Title = "List";
+}
+
+<h2 class="text-muted text-center">Your Cart</h2>
+<table class="table">
+    <tr>
+        <td>Product Name</td>
+        <td>Unit Price</td>
+        <td>Units In Stock</td>
+        <td>Quantity</td>
+        <td></td>
+    </tr>
+
+    @foreach (var item in Model.Cart.CartLines)
+    {
+        <tr>
+            <td>@item.Product.ProductName</td>
+            <td>@item.Product.UnitPrice</td>
+            <td>@item.Product.UnitsInStock</td>
+            <td>@item.Quantity</td>
+            <td class="text-right"><a class="btn btn-sm btn-danger" href="@Url.Action("Remove","Cart",new{productId=@item.Product.ProductId})"><i class="fa fa-trash "></i> Remove From Cart</a></td>
+        </tr>
+    }
+
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td>
+            <h3>Total</h3>
+        </td>
+        <td class="text-right">
+            <h3><strong> @Model.Cart.Total</strong></h3>
+        </td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><a href="@Url.Action("Index","Product")" class="btn btn-sm btn-secondary"><i class="fa fa-shopping-cart"></i> Continue Shopping</a></td>
+        <td class="text-right">
+            <a href="@Url.Action("Complete","Cart")" class="btn btn-sm btn-success"><i class="fa fa-shopping-basket"></i> Go To Checkout</a>
+        </td>
+    </tr>
+</table>
+
