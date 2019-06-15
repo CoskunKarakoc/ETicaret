@@ -1,0 +1,64 @@
+﻿@using Abc.Nrtwnd.Entities.Concrete
+@model Abc.Nrtwnd.WebUI.Models.Product.ProductAddViewModal
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    List<SelectListItem> items = new List<SelectListItem>();
+    foreach (Category category in Model.Categories)
+    {
+        items.Add(new SelectListItem { Text = category.CategoryName, Value = category.CategoryId.ToString() });
+    }
+
+
+}
+
+
+<h2>Add a Product</h2>
+
+@using (Html.BeginForm("Add", "Admin", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.ProductName, new { htmlAttributes = new { @class = "form-control", placeholder = "Product Name" } })
+
+                @Html.ValidationMessageFor(model => model.Product.ProductName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.UnitPrice, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.UnitPrice, new { htmlAttributes = new { @class = "form-control", placeholder = "Unit Price" } })
+                @Html.ValidationMessageFor(model => model.Product.UnitPrice, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.UnitsInStock, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Product.UnitsInStock, new { htmlAttributes = new { @class = "form-control", placeholder = "Units In Stock" } })
+                @Html.ValidationMessageFor(model => model.Product.UnitsInStock, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product, "Categories", htmlAttributes: new { @class = "control-label col-md-2" })
+
+            <div class="col-md-10 form-group">
+
+                @Html.DropDownListFor(x => x.Product.CategoryId, items, "--Category Seçiniz--",new {@class="form-control"})
+
+                @Html.ValidationMessageFor(model => model.Product.CategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Add To Product" class="btn btn-sm btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
