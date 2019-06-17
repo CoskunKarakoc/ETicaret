@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Abc.BusinessLayer.DependencyResolver;
 using Abc.Nrtwnd.WebUI.Infrastructre.Ninject;
 
 namespace Abc.Nrtwnd.WebUI
@@ -14,7 +15,7 @@ namespace Abc.Nrtwnd.WebUI
         {
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
+            ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory(new BusinessModule()));
         }
     }
 }
